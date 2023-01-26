@@ -69,7 +69,6 @@ const MadlibForm =({add, setSentence})=> {
                 id="story"
                 value={formData.story} 
                 onChange={handleChange}
-                defaultValue = "fantasy"
                 >
                     <option value="fantasy">Fantasy</option>
                     <option value="comedy">Comedy</option>

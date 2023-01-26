@@ -8,7 +8,6 @@ const Madlib = () => {
     })
     // retrieve story from form data, then set the story in ref.
     const setSentence = (formData) => {
-        console.log(formData.story);
         sentence.current.start = stories[formData.story].start;
         sentence.current.middle = stories[formData.story].middle;
         sentence.current.end = stories[formData.story].end;
