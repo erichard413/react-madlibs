@@ -8,11 +8,12 @@ const Madlib = () => {
     })
     // retrieve story from form data, then set the story in ref.
     const setSentence = (formData) => {
+        console.log(formData.story);
         sentence.current.start = stories[formData.story].start;
         sentence.current.middle = stories[formData.story].middle;
         sentence.current.end = stories[formData.story].end;
     }
-
+    
     // I want to check if the first letter of the word is a vowel, if vowel, use 'an' otherwise use 'a'.
     const isVowel = (letter) => {
         const vowels = ['a','e', 'i', 'o', 'u']

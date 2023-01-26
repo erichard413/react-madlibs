@@ -1,6 +1,7 @@
 
 
-const stories = {fantasy: {
+const stories = {
+    fantasy: {
         start: "Once upon a time there was ",
         middle: "who tried to fight ",
         end: "and lost."

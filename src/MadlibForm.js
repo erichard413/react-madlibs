@@ -6,7 +6,7 @@ const MadlibForm =({add, setSentence})=> {
         noun2: "",
         adjective: "",
         color: "",
-        story: "",
+        story: "fantasy",
     }
     const [formData, setFormData] = useState(initialState)
 
@@ -20,7 +20,7 @@ const MadlibForm =({add, setSentence})=> {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const{noun, noun2, adjective, color} = formData;
+        const{noun, noun2, adjective, color, story} = formData;
         add(formData);
         setSentence(formData);
         setFormData(initialState);
@@ -68,7 +68,9 @@ const MadlibForm =({add, setSentence})=> {
                 name = "story"
                 id="story"
                 value={formData.story} 
-                onChange={handleChange}>
+                onChange={handleChange}
+                defaultValue = "fantasy"
+                >
                     <option value="fantasy">Fantasy</option>
                     <option value="comedy">Comedy</option>
                     <option value="romance">Romance</option>
