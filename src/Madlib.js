@@ -1,8 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import MadlibForm from './MadlibForm';
+import stories from './Stories';
 
 const Madlib = () => {
-    
+
+    const sentence = useRef({
+    })
+    // retrieve story from form data, then set the story in ref.
+    const setSentence = (formData) => {
+        sentence.current.start = stories[formData.story].start;
+        sentence.current.middle = stories[formData.story].middle;
+        sentence.current.end = stories[formData.story].end;
+    }
+
     // I want to check if the first letter of the word is a vowel, if vowel, use 'an' otherwise use 'a'.
     const isVowel = (letter) => {
         const vowels = ['a','e', 'i', 'o', 'u']
@@ -14,12 +24,11 @@ const Madlib = () => {
     const resetMadlib = () => {
         setMadlib("");
     }
-
     return (
         <>
         <h1>Madlibs!</h1>
-        {!madlib && <MadlibForm add={setMadlib}/>}
-        <p>{madlib && `There was ${isVowel(madlib.color[0].toLowerCase()) ? 'an' : 'a'} ${madlib.color} ${madlib.noun} who loved ${isVowel(madlib.adjective[0].toLowerCase()) ? 'an' : 'a'} ${madlib.adjective} ${madlib.noun2}`}</p>
+        {!madlib && <MadlibForm add={setMadlib} setSentence={setSentence}/>}
+        <p>{madlib && `${sentence.current.start} ${isVowel(madlib.color[0].toLowerCase()) ? 'an' : 'a'} ${madlib.color} ${madlib.noun} ${sentence.current.middle} ${isVowel(madlib.adjective[0].toLowerCase()) ? 'an' : 'a'} ${madlib.adjective} ${madlib.noun2} ${sentence.current.end}`}</p>
         {madlib  && <button onClick={resetMadlib}>Reset</button>}
         </>
     )

@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 
-const MadlibForm =({add})=> {
+const MadlibForm =({add, setSentence})=> {
     const initialState = {
         noun: "",
         noun2: "",
         adjective: "",
-        color: ""
+        color: "",
+        story: "",
     }
     const [formData, setFormData] = useState(initialState)
 
@@ -21,6 +22,7 @@ const MadlibForm =({add})=> {
         e.preventDefault()
         const{noun, noun2, adjective, color} = formData;
         add(formData);
+        setSentence(formData);
         setFormData(initialState);
     }
     return (
@@ -61,6 +63,18 @@ const MadlibForm =({add})=> {
                 value={formData.color} 
                 onChange={handleChange}
             />
+            <label htmlFor="story">Story</label>
+                <select 
+                name = "story"
+                id="story"
+                value={formData.story} 
+                onChange={handleChange}>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="romance">Romance</option>
+                    <option value="horror">Horror</option>
+                </select>
+                
             {/* Button will not show up until all forms are filled. */}
             <div className="buttons">
                 {(formData.noun != "" && formData.noun2 != "" && formData.color !="" && formData.adjective != "") && <button>Get Story!</button>}
@@ -68,5 +82,12 @@ const MadlibForm =({add})=> {
         </form>
     )
 }
+
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
 
 export default MadlibForm;
